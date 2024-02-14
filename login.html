@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #b2c1eb;
+        }
+        header {
+            background-color: #4f8dc4;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            width: 30%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(173, 178, 222, 0.1);
+        }
+        .login-form {
+            width: 300px;
+            margin: auto;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #afb1e7;
+            box-sizing: border-box;
+        }
+        .login-form input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .login-form img {
+            display: block;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Banking System</h1>
+    </header>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-form">
+                <img src="img/user.jpg" alt="Bank Logo" width="100">
+                <form action="process_login.php" method="post">
+                    <label for="username">Username/Email:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Simple Banking System</p>
+    </footer>
+</body>
+</html>
