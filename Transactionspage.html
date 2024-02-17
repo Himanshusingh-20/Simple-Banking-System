@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions Page</title>
+    <style>
+        /* The previous styles remain unchanged */
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .popup button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Banking System</h1>
+    </header>
+
+    <main>
+        <h2>Welcome, [Customer Name]</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Transaction records will go here -->
+                <tr>
+                    <td>2024-02-14</td>
+                    <td>Deposit</td>
+                    <td>$100</td>
+                    <td>$500</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <button onclick="openPopup('Deposit')">Deposit</button>
+        <button onclick="openPopup('Withdraw')">Withdraw</button>
+
+        <div id="depositPopup" class="popup">
+            <h3>Deposit</h3>
+            <input id="depositAmount" type="number" placeholder="Enter amount">
+            <button onclick="closePopup()">Cancel</button>
+            <button onclick="processTransaction('Deposit')">Confirm Deposit</button>
+            <div id="depositMessage" class="message"></div>
+        </div>
+
+        <div id="withdrawPopup" class="popup">
+            <h3>Withdraw</h3>
+            <input id="withdrawAmount" type="number" placeholder="Enter amount">
+            <button onclick="closePopup()">Cancel</button>
+            <button onclick="processTransaction('Withdraw')">Confirm Withdrawal</button>
+            <div id="withdrawMessage" class="message"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Banking System
+    </footer>
+
+    <script>
+        function openPopup(type) {
+            document.getElementById(`${type.toLowerCase()}Popup`).style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('depositPopup').style.display = 'none';
+            document.getElementById('withdrawPopup').style.display = 'none';
+            document.getElementById('depositAmount').value = '';
+            document.getElementById('withdrawAmount').value = '';
+            document.getElementById('depositMessage').innerHTML = '';
+            document.getElementById('withdrawMessage').innerHTML = '';
+        }
+
+        function processTransaction(type) {
+            let amount;
+
+            if (type === 'Deposit') {
+                amount = document.getElementById('depositAmount').value;
+            } else {
+                amount = document.getElementById('withdrawAmount').value;
+            }
+
+            // You need to implement server-side logic here to process the transaction
+            // and update the balance. For simplicity, let's assume the balance is stored
+            // in a variable.
+            let currentBalance = 500; // Replace with the actual balance from the server
+
+            if (type === 'Withdraw' && amount > currentBalance) {
+                document.getElementById(`${type.toLowerCase()}Message`).innerHTML = 'Insufficient Funds';
+            } else {
+                // Implement logic to update the balance
+                // Display success message or handle any other response from the server
+                closePopup();
+            }
+        }
+    </script>
+</body>
+</html>

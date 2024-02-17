@@ -13,21 +13,28 @@
         }
         header {
             background-color: #4f8dc4;
-            color: white;
-            text-align: center;
-            padding: 1em;
+            color: rgb(255, 255, 255);
+           padding: 1em;
         }
+        
+        header h2{
+            display: inline;
+            padding: 20px;
+            
+        }
+
         footer {
-            background-color: #000000;
-            color: white;
+            background-color: #008cfe;
+            color: rgb(0, 0, 0);
             text-align: center;
             padding: 1em;
-            position: fixed;
+            position:relative;
             bottom: 0;
             width: 100%;
         }
         .container {
             width: 30%;
+            padding: 20px;
             margin: auto;
             overflow: hidden;
         }
@@ -69,18 +76,23 @@
             margin: auto;
             margin-bottom: 10px;
         }
+        .a{
+            padding: 8px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Banking System</h1>
+        <img src="img/bank.png" alt="Bank Logo" width="80">
+        <h2>Banking System</h2>
     </header>
 
     <div class="container">
         <div class="login-container">
             <div class="login-form">
-                <img src="img/user.jpg" alt="Bank Logo" width="100">
-                <form action="process_login.php" method="post">
+                <img src="img/user.jpg" alt="User Logo" width="100" >
+                <form action="processlogin.php" method="post">
                     <label for="username">Username/Email:</label>
                     <input type="text" id="username" name="username" required>
 
@@ -88,13 +100,14 @@
                     <input type="password" id="password" name="password" required>
 
                     <input type="submit" value="Login">
+                    <a href="bankerlogin.html">Direct to Banker login</a>
                 </form>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>Simple Banking System</p>
+        <p>Copyright Simple-Banking</p>
     </footer>
 </body>
 </html>
