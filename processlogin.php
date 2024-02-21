@@ -1,23 +1,14 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Add your database connection logic here
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "bank";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require_once('db.php');
 
     // Get username and password from the form
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     // Validate and authenticate using prepared statements
-    $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ? AND user_type='customer' AND password = ?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $stmt->store_result();
@@ -32,10 +23,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // Store the access token in the database or a session variable
         // For simplicity, storing in a session variable
         session_start();
+        $_SESSION['user_id'] = $userId;
         $_SESSION['access_token'] = $accessToken;
 
         // Redirect to the transactions page
-        header("Location: Transactionspage.html");
+        header("Location: TransactionView.php");
         exit();
     } else {
         // Authentication failed, handle accordingly (e.g., display an error message)
